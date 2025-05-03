@@ -1,1 +1,417 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #FFCC00;
+    --primary-dark: #e6b800;
+    --primary-light: #ffe066;
+    --text-dark: #333;
+    --bg-light: #f9f9f9;
+    --sidebar-width: 250px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Login Page */
+.login-container {
+    max-width: 450px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    background-color: white;
+    animation: fadeIn 0.5s;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-logo img {
+    max-height: 80px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--text-dark);
+}
+
+/* Main Layout */
+.sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.sidebar-header {
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.sidebar-logo {
+    height: 50px;
+}
+
+.sidebar-menu {
+    padding: 1rem 0;
+}
+
+.sidebar-menu-item {
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.sidebar-menu-item:hover, .sidebar-menu-item.active {
+    background-color: var(--primary-light);
+    color: var(--text-dark);
+}
+
+.sidebar-menu-item i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Dashboard Widgets */
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.widget-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.widget-card:hover {
+    transform: translateY(-5px);
+}
+
+.widget-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.widget-count {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.widget-label {
+    color: #666;
+}
+
+/* Ticket Form */
+.ticket-form {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.ai-suggestion {
+    background-color: #f0f8ff;
+    border-left: 4px solid #007bff;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.25rem;
+}
+
+/* Ticket List */
+.ticket-list {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.ticket-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.ticket-card {
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.ticket-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.status-abierto {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-en-proceso {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-cerrado {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Ticket Detail */
+.ticket-detail {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.timeline {
+    position: relative;
+    margin: 2rem 0;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 7px;
+    width: 2px;
+    background-color: #eee;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.timeline-content {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.chat-messages {
+    margin: 1.5rem 0;
+}
+
+.message {
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.message-sent {
+    justify-content: flex-end;
+}
+
+.message-sent .message-content {
+    background-color: var(--primary-light);
+}
+
+.message-received {
+    justify-content: flex-start;
+}
+
+.message-received .message-content {
+    background-color: #f0f0f0;
+}
+
+/* Survey */
+.survey-modal .modal-header {
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+}
+
+.survey-question {
+    margin-bottom: 1.5rem;
+}
+
+.likert-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.likert-option {
+    text-align: center;
+    flex: 1;
+}
+
+.likert-option input {
+    margin-bottom: 0.5rem;
+}
+
+/* Admin Panel */
+.admin-panel {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.stats-card {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.stats-card:hover {
+    background-color: #f0f0f0;
+}
+
+.stats-value {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .main-content.sidebar-active {
+        margin-left: var(--sidebar-width);
+    }
+    
+    .sidebar-toggle {
+        display: block;
+    }
+}
+
+/* Loading States */
+.loading-spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-pulse {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: pulse 1.5s infinite;
+    border-radius: 0.25rem;
+    height: 1rem;
+}
+
+@keyframes pulse {
+    0% {
+        background-position: 0% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}

@@ -1,0 +1,58 @@
+      <!-- New Ticket Form -->
+      <div id="new-ticket-content" >
+        <h3 class="mb-4">Crear Nuevo Ticket</h3>
+        
+        <div class="ticket-form">
+            <form id="new-ticket-form">
+                <div class="form-section">
+                    <label for="ticket-category" class="form-label">Categoría</label>
+                    <select class="form-select" id="ticket-category" required>
+                        <option value="" selected disabled>Seleccione una categoría</option>
+                        <option value="tecnico">Soporte Técnico</option>
+                        <option value="academico">Asuntos Académicos</option>
+                        <option value="financiero">Asuntos Financieros</option>
+                        <option value="administrativo">Trámites Administrativos</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor seleccione una categoría.</div>
+                </div>
+                
+                <div class="form-section">
+                    <label for="ticket-subject" class="form-label">Asunto</label>
+                    <input type="text" class="form-control" id="ticket-subject" required>
+                    <div class="invalid-feedback">Por favor ingrese un asunto para su ticket.</div>
+                </div>
+                
+                <div class="form-section">
+                    <label for="ticket-description" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="ticket-description" rows="5" required></textarea>
+                    <div class="invalid-feedback">Por favor ingrese una descripción detallada.</div>
+                </div>
+                
+                <div class="form-section">
+                    <label for="ticket-attachments" class="form-label">Adjuntos (opcional)</label>
+                    <input type="file" class="form-control" id="ticket-attachments" multiple>
+                    <small class="form-text text-muted">Puede adjuntar hasta 3 archivos (max. 5MB cada uno).</small>
+                </div>
+                
+                <div class="form-section">
+                    <label for="ticket-priority" class="form-label">Prioridad</label>
+                    <select class="form-select" id="ticket-priority" required>
+                        <option value="baja">Baja</option>
+                        <option value="media" selected>Media</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                    
+                    <div class="ai-suggestion mt-2">
+                        <i class="bi bi-lightbulb me-2"></i>
+                        <strong>Sugerencia de IA:</strong> Basado en el contenido, se recomienda una prioridad <span class="fw-bold">Media</span>.
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-secondary" id="cancel-ticket-btn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                </div>
+            </form>
+        </div>
+    </div>
