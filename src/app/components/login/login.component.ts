@@ -20,7 +20,7 @@ export class LoginComponent {
 
   login() {
     // Validación simulada
-    if (this.email === 'carlos.rodriguez@universidad.edu' && this.password === '123456') {
+    if (this.email === 'admin' && this.password === '123') {
       this.loginError = false;
       this.router.navigate(['/dashboard']);
     } else {
