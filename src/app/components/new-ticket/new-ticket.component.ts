@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServicesService } from '../../services/services.service';
 import { Ticket } from '../../models/cl-ticket';
 import { CommonModule } from '@angular/common';
+import { TicketService } from '../../services/ticket.service';
 
 @Component({
   selector: 'app-new-ticket',
   standalone: true,
-  imports: [CommonModule, FormsModule], // necesario para ngModel
+  imports: [CommonModule, FormsModule, ReactiveFormsModule], // necesario para ngModel
   templateUrl: './new-ticket.component.html',
   styleUrls: ['./new-ticket.component.css'] // corregido a plural
 })
@@ -53,26 +54,34 @@ export class NewTicketComponent {
     'Eventos y talleres'
   ];
 
+  ticketForm?: FormGroup
 
-  ticket: Partial<Ticket> = {
-    carrera: '',
-    categoria: '',
-    descripcion: '',
-    comentarioEstudiante: '',
-    canal: '',
-    estado: 'pendiente',
-    fechaCreacion: new Date()
-  };
+  constructor(private ticketService: TicketService, private formBuilder: FormBuilder, ) {
+    this.createForm();
+  }
 
-  constructor(private ticketService: ServicesService) { }
+  createForm(): void {
+    this.ticketForm = this.formBuilder.group({
+      career: ['', [Validators.required]],
+      categoria: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      student_comments: [''],
+      channel: ['', [Validators.required]],
+    //  estado: 'pendiente',
+    //  fechaCreacion: new Date()
+    })
+  }
 
   enviarTicket(): void {
-    if (!this.ticket.categoria || !this.ticket.descripcion || !this.ticket.canal) {
+
+    console.log(this.ticketForm);
+
+    if (!this.ticketForm?.valid) {
       alert('Por favor complete los campos obligatorios.');
       return;
     }
 
-    this.ticketService.saveTicket(this.ticket as Ticket).subscribe({
+    this.ticketService.createTicket(this.ticketForm.value).subscribe({
       next: (res) => {
         alert('Ticket enviado correctamente.');
         this.limpiarFormulario();
@@ -85,14 +94,13 @@ export class NewTicketComponent {
   }
 
   limpiarFormulario() {
-    this.ticket = {
-      categoria: '',
-      descripcion: '',
-      comentarioEstudiante: '',
-      canal: '',
-      estado: 'pendiente',
-      fechaCreacion: new Date()
-    };
+    this.ticketForm?.patchValue({
+      career: [''],
+      categoria: [''],
+      description: [''],
+      student_comments: [''],
+      channel: [''],
+    })
   }
 
   cancelar() {

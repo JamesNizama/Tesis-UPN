@@ -24,7 +24,7 @@
                 <div class="ticket-card" *ngFor="let ticket of tickets">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="mb-1">{{ticket.number}} - {{ticket.categoria}}</h5>
-                        <span class="ticket-status status-en-proceso">{{ticket.status}}</span>
+                        <span class="ticket-status status-en-proceso">{{ticket.status}} - {{ticket.priority | uppercase}}</span>
                     </div>
                     <p class="mb-1">{{ticket.description}}</p>
                     <div class="d-flex justify-content-between align-items-center">

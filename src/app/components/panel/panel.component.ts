@@ -52,9 +52,10 @@ export class PanelComponent implements OnInit {
   constructor(private ticketService: ServicesService) { }
 
   ngOnInit(): void {
-    this.getAll();
+    //this.getAll();
   }
 
+  /*
   getAll() {
     this.ticketService.getAllTickets().subscribe({
       next: (res) => {
@@ -64,5 +65,5 @@ export class PanelComponent implements OnInit {
         console.error('Error al cargar tickets:', err);
       }
     });
-  }
+  }*/
 }

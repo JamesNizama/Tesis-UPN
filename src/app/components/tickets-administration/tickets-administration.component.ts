@@ -4,13 +4,13 @@ import { Ticket } from '../../models/cl-ticket';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-ticket',
+  selector: 'app-tickets-administration',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './ticket.component.html',
-  styleUrl: './ticket.component.css'
+  templateUrl: './tickets-administration.component.html',
+  styleUrl: './tickets-administration.component.css'
 })
-export class TicketComponent implements OnInit {
+export class TicketsAdministrationComponent {
 
   tickets: any[] = [];
 
@@ -23,7 +23,7 @@ export class TicketComponent implements OnInit {
   }
 
   getAllTickets(): void {
-    this.ticketService.getAllTickets().subscribe(rs => {
+    this.ticketService.getTicketsByPriorityToAdministration().subscribe(rs => {
       this.tickets = rs;
     }, err => {
       console.log(err);
@@ -33,6 +33,5 @@ export class TicketComponent implements OnInit {
   seleccionarTicket(ticket: any): void {
     this.ticketSeleccionado = ticket;
   }
-
 
 }

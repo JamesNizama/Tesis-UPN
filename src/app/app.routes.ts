@@ -7,6 +7,7 @@ import { NewTicketComponent } from './components/new-ticket/new-ticket.component
 import { DetalleTicketComponent } from './components/detalle-ticket/detalle-ticket.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { TicketsAdministrationComponent } from './components/tickets-administration/tickets-administration.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'panel', pathMatch: 'full' }, 
       { path: 'panel', component: PanelComponent },
       { path: 'ticket', component: TicketComponent },
+      { path: 'ticket/administration', component: TicketsAdministrationComponent },
       { path: 'new-ticket', component: NewTicketComponent },
       { path: 'estado', component: DetalleTicketComponent },
       { path: 'encuesta', component: EncuestaComponent },
