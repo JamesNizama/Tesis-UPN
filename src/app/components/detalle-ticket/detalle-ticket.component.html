@@ -1,32 +1,34 @@
       <!-- Ticket Detail -->
       <div id="ticket-detail-content">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3>#1089 - Problema con acceso al sistema</h3>
-            <span class="ticket-status status-en-proceso">En proceso</span>
+            <h3>#{{ticket.number}} - {{ticket.categoria}}</h3>
+            <span class="ticket-status status-en-proceso">{{ticket.status}}</span>
         </div>
         
         <div class="ticket-detail">
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <p><strong>Categoría:</strong> Soporte Técnico</p>
-                    <p><strong>Creado:</strong> 15/05/2023 10:30</p>
-                    <p><strong>Última actualización:</strong> 16/05/2023 14:45</p>
+                    <p><strong>Categoría:</strong> {{ticket.categoria}}</p>
+                    <p><strong>Creado:</strong> {{ticket.created_at?.$date | date: 'dd/MM/yyyy HH:mm'}}</p>
+                    <!---->
+                    <p><strong>Última actualización:</strong> {{ticket.modified_at?.$date | date: 'dd/MM/yyyy HH:mm'}}</p>
                 </div>
                 <div class="col-md-6">
-                    <p><strong>Prioridad:</strong> Media</p>
-                    <p><strong>Asignado a:</strong> Departamento de TI</p>
-                    <p><strong>Tiempo de respuesta estimado:</strong> 24 horas</p>
+                    <p><strong>Prioridad:</strong> {{ticket.priority}}</p>
+                    <p><strong>Asignado a:</strong> {{ticket.assign_to}}</p>
+                    <!--                    <p><strong>Tiempo de respuesta estimado:</strong> {{ticket.time_left}}</p>
+-->
                 </div>
             </div>
             
             <div class="mb-4">
                 <h5>Descripción</h5>
                 <div class="p-3 bg-light rounded">
-                    <p>No puedo acceder a la plataforma de cursos virtuales desde mi cuenta. Cuando intento iniciar sesión, aparece un mensaje de error que dice "Credenciales inválidas" pero estoy seguro de que mi usuario y contraseña son correctos.</p>
-                    <p>Ya intenté restablecer mi contraseña pero sigo teniendo el mismo problema. Necesito acceder lo antes posible para entregar mis actividades.</p>
+                    <p>{{ticket.description}}</p>
                 </div>
             </div>
             
+            <!--
             <h5 class="mb-3">Historial de estados</h5>
             <div class="timeline">
                 <div class="timeline-item">
@@ -50,7 +52,7 @@
                         <small class="text-muted">16/05/2023 14:45 - Ana Martínez (Soporte)</small>
                     </div>
                 </div>
-            </div>
+            </div>-->
             
             <h5 class="mb-3">Conversación</h5>
             <div class="chat-messages">
@@ -84,8 +86,8 @@
             </div>
             
             <div class="d-flex justify-content-end mt-4">
-                <button class="btn btn-outline-danger me-2">Cancelar Ticket</button>
-                <button class="btn btn-outline-success">Cerrar Ticket</button>
+                <button (click)="cancelTicket()" class="btn btn-outline-danger me-2">Cancelar Ticket</button>
+                <button (click)="closeTicket()" class="btn btn-outline-success">Cerrar Ticket</button>
             </div>
         </div>
     </div>

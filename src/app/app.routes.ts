@@ -18,9 +18,9 @@ export const routes: Routes = [
       { path: '', redirectTo: 'panel', pathMatch: 'full' }, 
       { path: 'panel', component: PanelComponent },
       { path: 'ticket', component: TicketComponent },
-      { path: 'ticket/administration', component: TicketsAdministrationComponent },
+      { path: 'ticket-administration', component: TicketsAdministrationComponent },
       { path: 'new-ticket', component: NewTicketComponent },
-      { path: 'estado', component: DetalleTicketComponent },
+      { path: 'estado/:id', component: DetalleTicketComponent },
       { path: 'encuesta', component: EncuestaComponent },
       { path: 'perfil', component: PerfilComponent },
     ]

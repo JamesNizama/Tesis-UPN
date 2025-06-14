@@ -5,19 +5,20 @@
         
         <div class="ticket-list">
             <div class="ticket-filters">
-                <div class="input-group">
+                <!--<div class="input-group">
                     <input type="text" class="form-control" placeholder="Buscar tickets..." id="ticket-search">
                     <button class="btn btn-outline-secondary" type="button">
                         <i class="bi bi-search"></i>
                     </button>
-                </div>
-                
-                <select class="form-select" id="filter-status" style="max-width: 200px;">
+                </div>-->
+
+                <!--<select class="form-select" id="filter-status" style="max-width: 200px;">
                     <option value="todos" selected>Todos los estados</option>
                     <option value="abierto">Abiertos</option>
                     <option value="en-proceso">En proceso</option>
                     <option value="cerrado">Cerrados</option>
-                </select>
+                </select>-->
+                
             </div>
             
             <div class="tickets-container">
@@ -29,7 +30,7 @@
                     <p class="mb-1">{{ticket.description}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <small class="text-muted">Creado: {{ticket.created_at.$date | date: 'dd-MM-yyyy'}}</small>
-                        <a  class="btn btn-sm btn-outline-primary" (click)="seleccionarTicket(ticket)"  data-bs-toggle="modal" data-bs-target="#detalleModal">Ver detalles</a>
+                        <a  class="btn btn-sm btn-outline-primary" *ngIf="ticket.status !== 'CLOSED'" (click)="atenderTicket(ticket)">Atender</a>
                     </div>
                 </div>
                 
@@ -50,27 +51,3 @@
             
         </div>
     </div>
-
-<!-- Ticket Detail Modal -->
-<div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="ticketDetailModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ticketDetailModalLabel">Detalles del Ticket</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <div id="ticket-detail-content">
-            <h5 id="ticket-detail-title"> #{{ticketSeleccionado?.number}} - {{ticketSeleccionado?.categoria}}</h5>
-            <p><strong>Descripción:</strong> <span id="ticket-detail-description">{{ticketSeleccionado?.descripcion}}</span></p>
-            <p><strong>Estado:</strong> <span id="ticket-detail-status">{{ticketSeleccionado?.status}}</span></p>
-            <p><strong>Fecha de Creación:</strong> <span id="ticket-detail-created">{{ticketSeleccionado?.created_at.$date}}</span></p>
-            <p><strong>Comentario:</strong> <span id="ticket-detail-comments">Estamos revisando su acceso. Un técnico se pondrá en contacto con usted pronto.</span></p>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>

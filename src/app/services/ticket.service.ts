@@ -21,7 +21,23 @@ export class TicketService {
   }
 
   getTicketsByPriorityToAdministration(): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}/pending`)
+    return this.httpClient.get<any>(`${this.url}/pending?username=${sessionStorage.getItem('username')}`);
+  }
+
+  getTicketById(ticketId: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}/${ticketId}`);
+  }
+
+  getStadistics(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}/status`);
+  }
+
+  cancelTicket(ticketId: string): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}/${ticketId}/cancel`, {});
+  }
+
+  closeTicket(ticketId: string): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}/${ticketId}/close`, {});
   }
 
   /*

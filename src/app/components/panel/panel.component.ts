@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServicesService } from '../../services/services.service';
 import { Ticket } from '../../models/cl-ticket';
+import { TicketService } from '../../services/ticket.service';
 
 @Component({
   selector: 'app-panel',
@@ -11,7 +12,7 @@ import { Ticket } from '../../models/cl-ticket';
   styleUrl: './panel.component.css'
 })
 export class PanelComponent implements OnInit {
-  tickets: Ticket[] = [];
+  stadistics: any;
 
   // dataSource: Ticket[] = [
   //   {
@@ -49,10 +50,14 @@ export class PanelComponent implements OnInit {
   //   }
   // ];
 
-  constructor(private ticketService: ServicesService) { }
+  constructor(private ticketService: TicketService) { }
 
   ngOnInit(): void {
     //this.getAll();
+    this.ticketService.getStadistics().subscribe(rs => {
+      this.stadistics = rs;
+      console.log(rs);
+    })
   }
 
   /*

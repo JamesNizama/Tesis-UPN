@@ -29,7 +29,7 @@
                     <p class="mb-1">{{ticket.description}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <small class="text-muted">Creado: {{ticket.created_at.$date | date: 'dd-MM-yyyy'}}</small>
-                        <a  class="btn btn-sm btn-outline-primary" (click)="seleccionarTicket(ticket)"  data-bs-toggle="modal" data-bs-target="#detalleModal">Ver detalles</a>
+                        <a  class="btn btn-sm btn-outline-primary" (click)="verDetalle(ticket)">Ver detalles</a>
                     </div>
                 </div>
                 
@@ -52,6 +52,7 @@
     </div>
 
 <!-- Ticket Detail Modal -->
+ <!--
 <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="ticketDetailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -73,4 +74,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->

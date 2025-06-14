@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../../services/ticket.service';
 import { Ticket } from '../../models/cl-ticket';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket',
@@ -16,7 +17,7 @@ export class TicketComponent implements OnInit {
 
   ticketSeleccionado: any;
 
-  constructor(private ticketService: TicketService){}
+  constructor(private ticketService: TicketService, private route: Router){}
 
   ngOnInit(): void {
     this.getAllTickets();
@@ -33,6 +34,11 @@ export class TicketComponent implements OnInit {
   seleccionarTicket(ticket: any): void {
     this.ticketSeleccionado = ticket;
   }
+
+  verDetalle(ticket: any): void {
+    this.route.navigate(['/dashboard/estado/' + ticket._id.$oid]);
+  }
+
 
 
 }

@@ -20,12 +20,16 @@ export class LoginComponent {
 
   login() {
     // Validación simulada
+    /*
     if (this.email === 'admin' && this.password === '123') {
       this.loginError = false;
       this.router.navigate(['/dashboard']);
     } else {
       this.loginError = true;
-    }
+    }*/
+
+    sessionStorage.setItem('username', this.email);
+    this.router.navigate(['/dashboard']);
   }
 
 }
